@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Checkout
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">🧾 Checkout</h2>
+
+<div class="row">
+
+<div class="col-md-7">
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label>Full Name</label>
+
+<input
+type="text"
+name="full_name"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Phone Number</label>
+
+<input
+type="text"
+name="phone"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Address</label>
+
+<textarea
+name="address"
+class="form-control"
+rows="3"
+required></textarea>
+
+</div>
+
+<div class="mb-3">
+
+<label>City</label>
+
+<input
+type="text"
+name="city"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>PIN Code</label>
+
+<input
+type="text"
+name="pincode"
+class="form-control"
+required>
+
+</div>
+
+<button class="btn btn-success">
+Place Order
+</button>
+
+</form>
+
+</div>
+
+<div class="col-md-5">
+
+<div class="card">
+
+<div class="card-body">
+
+<h4>Order Summary</h4>
+
+<hr>
+
+{% for item in cart_items %}
+
+<p>
+
+{{ item.product.name }}
+
+× {{ item.quantity }}
+
+<span class="float-end">
+
+₹ {{ item.total_price }}
+
+</span>
+
+</p>
+
+{% endfor %}
+
+<hr>
+
+<h4>
+
+Total
+
+<span class="float-end">
+
+₹ {{ total }}
+
+</span>
+
+</h4>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

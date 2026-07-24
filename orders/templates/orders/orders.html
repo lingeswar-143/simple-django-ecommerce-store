@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Orders
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">📦 My Orders</h2>
+
+{% if orders %}
+
+<div class="table-responsive">
+
+<table class="table table-bordered table-striped">
+
+<thead class="table-primary">
+
+<tr>
+
+<th>Order ID</th>
+<th>Date</th>
+<th>Total</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for order in orders %}
+
+<tr>
+
+<td>#{{ order.id }}</td>
+
+<td>{{ order.created_at|date:"d M Y, h:i A" }}</td>
+
+<td>₹ {{ order.total_price }}</td>
+
+<td>
+
+{% if order.status == "Pending" %}
+<span class="badge bg-warning text-dark">
+    Pending
+</span>
+
+{% elif order.status == "Processing" %}
+<span class="badge bg-info">
+    Processing
+</span>
+
+{% else %}
+<span class="badge bg-success">
+    Delivered
+</span>
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% else %}
+
+<div class="alert alert-info">
+No orders yet.
+</div>
+
+{% endif %}
+
+<a href="{% url 'home' %}" class="btn btn-primary">
+Back to Home
+</a>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="p-5 mb-5 bg-primary text-white rounded shadow">
+    <div class="container">
+        <h1 class="display-5 fw-bold">🛍️ Welcome to Simple E-Commerce</h1>
+        <p class="lead">
+            Discover the latest mobiles, laptops and accessories at the best prices.
+        </p>
+    </div>
+</div>
+
+<!-- Category Buttons -->
+<div class="mb-4 text-center">
+
+    <a href="{% url 'home' %}" class="btn btn-outline-primary m-1">
+        All
+    </a>
+
+    <a href="?category=Mobile" class="btn btn-outline-primary m-1">
+        📱 Mobiles
+    </a>
+
+    <a href="?category=Laptop" class="btn btn-outline-primary m-1">
+        💻 Laptops
+    </a>
+
+    <a href="?category=Accessory" class="btn btn-outline-primary m-1">
+        🎧 Accessories
+    </a>
+
+</div>
+
+<!-- Products -->
+<div class="row">
+
+{% for product in products %}
+
+<div class="col-lg-4 col-md-6 mb-4">
+
+    <div class="card shadow h-100">
+
+        {% if product.featured %}
+        <div class="card-header bg-warning text-dark text-center fw-bold">
+            ⭐ Featured Product
+        </div>
+        {% endif %}
+
+        <img src="{{ product.image.url }}"
+             class="card-img-top"
+             style="height:250px; object-fit:cover;">
+
+        <div class="card-body d-flex flex-column">
+
+            <h5 class="card-title">
+                {{ product.name }}
+            </h5>
+
+            <p class="text-warning fs-5 mb-2">
+                ⭐ {{ product.rating }}
+            </p>
+
+            <h4 class="text-primary">
+                ₹ {{ product.price }}
+            </h4>
+
+            {% if product.stock > 0 %}
+                <span class="badge bg-success mb-3">
+                    In Stock ({{ product.stock }})
+                </span>
+            {% else %}
+                <span class="badge bg-danger mb-3">
+                    Out of Stock
+                </span>
+            {% endif %}
+
+            <a href="{% url 'product_detail' product.id %}"
+               class="btn btn-primary mt-auto">
+                View Details
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="col-12">
+
+    <div class="alert alert-warning text-center">
+
+        <h4>No products found.</h4>
+
+        {% if query %}
+            <p>
+                You searched for:
+                <strong>"{{ query }}"</strong>
+            </p>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
