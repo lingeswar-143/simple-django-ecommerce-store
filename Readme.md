@@ -84,7 +84,21 @@ SimpleEcommerce/
 
 ## Screenshots
 
-(Add screenshots here after uploading.)
+### Home
+
+![Home](screenshots/home.png)
+
+### Product
+
+![Product](screenshots/product.png)
+
+### Cart
+
+![Cart](screenshots/cart.png)
+
+### Checkout
+
+![Checkout](screenshots/checkout.png)
 
 ---
 
