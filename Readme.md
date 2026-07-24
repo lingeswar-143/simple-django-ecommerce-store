@@ -84,10 +84,30 @@ SimpleEcommerce/
 
 ## Screenshots
 
+<<<<<<< HEAD
+=======
+## Screenshots
+
+### Register
+
+![Register](screenshots/register.png)
+
+### Login
+
+![Login](screenshots/login.png)
+
+>>>>>>> d392880 (Update README)
 ### Home
 
 ![Home](screenshots/home.png)
 
+<<<<<<< HEAD
+=======
+### Admin
+
+![Admin](screenshots/admin.png)
+
+>>>>>>> d392880 (Update README)
 ### Product
 
 ![Product](screenshots/product.png)
@@ -96,6 +116,13 @@ SimpleEcommerce/
 
 ![Cart](screenshots/cart.png)
 
+<<<<<<< HEAD
+=======
+### Orders
+
+![Orders](screenshots/orders.png)
+
+>>>>>>> d392880 (Update README)
 ### Checkout
 
 ![Checkout](screenshots/checkout.png)
